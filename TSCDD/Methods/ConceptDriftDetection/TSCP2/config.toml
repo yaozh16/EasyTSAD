@@ -1,0 +1,9 @@
+window_size = 10
+code_size = 10
+epoch_num = 100
+stride = 2
+batch_size = 64
+temperature = 0.1
+device = "cuda"
+lr = 1e-4
+change_threshold = 0.5

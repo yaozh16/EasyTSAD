@@ -106,10 +106,11 @@ Also, you can refer to the documentation hosted at https://dawnvince.github.io/E
 ```
 
 ### Define the Controller
+
 ```python
 from typing import Dict
 import numpy as np
-from EasyTSAD.Controller import TSADController
+from TSCDD.Controller import TSADController
 
 # if cfg_path is None, using default configuration
 gctrl = TSADController(cfg_path="/path/to/GlobalCfg.toml")
@@ -117,12 +118,13 @@ gctrl = TSADController(cfg_path="/path/to/GlobalCfg.toml")
 
 ### Load Dataset configurations
 #### Option 1: Load certain time series in one dataset:
+
 ```python
 # Specify certain curves in one dataset, 
 # e.g. AIOPS 0efb375b-b902-3661-ab23-9a0bb799f4e3 and ab216663-dcc2-3a24-b1ee-2c3e550e06c9
 gctrl.set_dataset(
     dataset_type="UTS",
-    dirname="/path/to/datasets", # The path to the parent directory of "UTS"
+    dataset_dir="/path/to/datasets",  # The path to the parent directory of "UTS"
     datasets="AIOPS",
     specify_curves=True,
     curve_names=[
@@ -133,12 +135,13 @@ gctrl.set_dataset(
 ```
 
 #### Option 2: Load all time series in certain datasets:
+
 ```python
 # Use all curves in datasets:
 datasets = ["AIOPS", "Yahoo"]
 gctrl.set_dataset(
     dataset_type="UTS",
-    dirname="/path/to/datasets", # The path to the parent directory of "UTS"
+    dataset_dir="/path/to/datasets",  # The path to the parent directory of "UTS"
     datasets=datasets,
 )
 ```
@@ -149,20 +152,21 @@ The following class `YourAlgo` just provides a *skeleton*, where you should impl
 - The [ARLinear](https://github.com/dawnvince/EasyTSAD/blob/main/EasyTSAD/Methods/AR/AR.py) instance will help you understand how to implement a learning-based model (Implemented using PyTorch);
 
 ```python
-from EasyTSAD.Methods import BaseMethod
-from EasyTSAD.DataFactory import TSData
+from TSCDD.Methods import BaseMethod
+from TSCDD.DataFactory import TSData
+
 
 class YourAlgo(BaseMethod):
     def __init__(self, hparams) -> None:
         super().__init__()
         self.__anomaly_score = None
         self.param_1 = hparams["param_1"]
-    
+
     def train_valid_phase(self, tsTrain: TSData):
         ...
-        
+
     def test_phase(self, tsData: TSData):
-        result = ... 
+        result = ...
         self.__anomaly_score = result
 
     def train_valid_phase_all_in_one(self, tsTrains: Dict[str, TSData]):
@@ -222,8 +226,10 @@ gctrl.run_exps(
 The Score Results can be founded in path `workspace/Results/Scores`, and the runtime information can be founded in path `workspace/Results/RunTime`
 
 ### Perform evaluations (Based on the saved scores)
+
 ```python
-from EasyTSAD.Evaluations.Protocols import EventF1PA, PointF1PA
+from TSCDD.Evaluations.Protocols import EventF1PA, PointF1PA
+
 # Specifying evaluation protocols
 gctrl.set_evals(
     [

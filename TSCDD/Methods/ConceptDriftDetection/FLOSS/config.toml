@@ -1,0 +1,3 @@
+window_size = 5
+margin_ignore = 3
+thresh_fix = 0.3

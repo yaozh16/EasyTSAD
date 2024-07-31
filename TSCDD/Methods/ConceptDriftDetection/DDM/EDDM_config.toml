@@ -1,0 +1,5 @@
+warm_start = 3
+alpha = 0.95
+beta = 0.9
+[ocs_params]
+    kernel = "rbf"

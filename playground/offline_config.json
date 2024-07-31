@@ -1,0 +1,65 @@
+{
+    "PathConfig": {
+        "Method": {},
+        "ExpSchema": null,
+        "TestSchema": null,
+        "EvalConfig": null,
+        "Output": "."
+    },
+    "DataConfig": {
+        "preprocess": [
+            "FillNAWithInterp",
+            "ZScoreNormByDim"
+        ],
+        "dataset_dir": "../../../datasets",
+        "dataset_type": "TS4CD",
+        "datasets": [
+            [
+                "AlanTuringTCPD",
+                [
+                    "apple"
+                ]
+            ]
+        ],
+        "label_types": [
+            "ChangePoint"
+        ]
+    },
+    "ExpSchemaConfig": {
+        "TestSchemaConfig": {
+            "test_schema_mode": "Offline",
+            "online_step_size": 1,
+            "online_retrain_window_size": 64,
+            "online_sliding_window_size": 1
+        },
+        "exp_schema_option": "Naive",
+        "train_test_split": 0.1,
+        "save_test_results": true,
+        "Method Hparams": {
+            "NaiveKSigma": {
+                "Default": {
+                    "K": 3
+                }
+            },
+            "MSSA": {
+                "Default": {}
+            }
+        }
+    },
+    "EvalConfig": {
+        "margins": [
+            0,
+            0
+        ]
+    },
+    "VisConfig": {
+        "fig_size": [
+            10,
+            10
+        ],
+        "total_size": true,
+        "dpi": 400,
+        "plot_columns": 1,
+        "plot_timeseries": true
+    }
+}

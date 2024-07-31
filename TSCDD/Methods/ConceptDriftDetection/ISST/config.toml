@@ -1,0 +1,4 @@
+omega = 6
+eta = 3
+crop_delta = true
+evt_pct = 0.95

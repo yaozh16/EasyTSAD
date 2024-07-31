@@ -1,0 +1,3 @@
+window_size = 5
+smooth_sigma = 5
+margin_ignore = 5

@@ -1,0 +1,72 @@
+{
+    "PathConfig": {
+        "Method": {},
+        "ExpSchema": null,
+        "TestSchema": null,
+        "EvalConfig": null,
+        "Output": "."
+    },
+    "DataConfig": {
+        "preprocess": [
+            "FillNAWithInterp",
+            "ZScoreNormByDim"
+        ],
+        "dataset_dir": "../datasets",
+        "dataset_type": "TS4CD",
+        "datasets": [
+            "Synthetic",
+            "AlanTuringTCPD",
+            "USC"
+        ],
+        "label_types": [
+            "ChangePoint"
+        ]
+    },
+    "ExpSchemaConfig": {
+        "TestSchemaConfig": {
+            "test_schema_mode": "Online",
+            "quiet": false,
+            "online_step_size": 1,
+            "online_retrain_window_size": 64,
+            "online_sliding_window_size": 1,
+            "offline_test_size": 600,
+            "offline_test_period": 200
+        },
+        "exp_schema_option": "Naive",
+        "train_ratio": 0.5,
+        "test_ratio": 1.0,
+        "save_test_results": true,
+        "Method Hparams": {
+            "NaiveKSigma": {
+                "Default": {
+                    "K": 3
+                }
+            },
+            "MSSA": {
+                "Default": {}
+            },
+            "ClaSP": {
+                "Default": {
+                    "window_size": 5
+                }
+            }
+        }
+    },
+    "EvalConfig": {
+        "margins": [
+            0,
+            0
+        ],
+        "eval_load_option": "Last"
+    },
+    "VisConfig": {
+        "fig_size": [
+            10,
+            10
+        ],
+        "total_size": true,
+        "dpi": 400,
+        "plot_columns": 1,
+        "plot_timeseries": true
+    }
+}

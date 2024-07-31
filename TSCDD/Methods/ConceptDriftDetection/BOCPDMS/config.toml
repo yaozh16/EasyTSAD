@@ -1,0 +1,10 @@
+AR_lags = [1, 2, 3, 4]
+intensity = 100
+prior_a = 1
+prior_b = 1
+prior_mean_scale = 0
+prior_var_scale = 0.075
+alpha_param = 0.01
+alpha_param_opt_t = 30
+threshold = 50
+trim_type = "keep_K"
